@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin page </title> 
+</head>
+<body>
+<h1>Admin page</h1>
+<table border="2" cellpadding="4" style="border-collapse:collapse">
+<tr>
+<th>Id</th>
+<th>UserName</th>
+<th>isActive</th>
+<th>Role</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Email</th>
+<th>Delete</th>
+<th>Update</th>
+</tr>
+<tr th:each="user : ${usersList}">
+<td><p th:text="${user.userId}"/></td>
+<td><p th:text="${user.userName}"/></td>
+<td><p th:text="${user.isActivated}"/></td>
+<td th:each="role : ${user.role}"><p th:text="${role.name}"/></td>
+<td th:each="userdetail : ${user.userDetails}"><p th:text="${userdetail.firstName}" /></td>
+<td th:each="userdetail : ${user.userDetails}"><p th:text="${userdetail.lastName}"/></td>
+<td th:each="userdetail : ${user.userDetails}"><p th:text="${userdetail.email}"/></td>
+<td><a th:href="@{'/delete?id='+${user.userId}}">Delete</a></td>
+<td><a th:href="@{'/updateform?id='+${user.userId}}">Update</a></td>
+</tr>
+</table>
+
+</body>
+</html>
